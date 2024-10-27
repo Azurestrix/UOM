@@ -1,0 +1,20 @@
+{
+  "name": "universe_of_madness",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/script.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "deploy": "vercel --prod"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "lil-gui": "^0.19.2",
+    "three": "^0.169.0",
+    "vercel": "^37.12.1",
+    "vite": "^5.4.9"
+  }
+}
