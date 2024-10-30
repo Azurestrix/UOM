@@ -1,11 +1,34 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import GUI from 'lil-gui';
-import { RGBELoader } from 'three/examples/jsm/Addons.js';
+import { GLTFLoader, RGBELoader } from 'three/examples/jsm/Addons.js';
+
+
+
 /**
  * Loaders
  */
 const rgbeLoader = new RGBELoader();
+const gltfLoader = new GLTFLoader();
+/* Loaders ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /**
  * Base
@@ -14,11 +37,90 @@ const rgbeLoader = new RGBELoader();
 /* const gui = new GUI()
 const debugObject = {} */
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Canvas
 const canvas = document.querySelector('canvas.webgl')
+/* Canvas ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Scene
 const scene = new THREE.Scene()
+/* Scene ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ */
+
+
+/* Helpers */
+const axesHelper = new THREE.AxesHelper(40)
+scene.add(axesHelper)
+
+
+const size = 10;
+const divisions = 10;
+const gridHelper = new THREE.GridHelper( size, divisions );
+scene.add( gridHelper );
+/* Helpers ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /**
  * Update all materials
@@ -37,6 +139,27 @@ const updateAllMaterials = () =>
         }
     })
 }
+/* Update all materials ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /**
  * HDR (RGBE) Environment map
@@ -49,14 +172,6 @@ rgbeLoader.load('environmentMap/360_SPACE_PANORAMA.hdr', (environmentMap) =>
         scene.environment = environmentMap;
     })
 
-/*  rgbeLoader.load('textures/environmentMap/HDRI-II.hdr', (environmentMap) => 
-    {
-        environmentMap.mapping = THREE.EquirectangularReflectionMapping;
-    
-        scene.background = environmentMap;
-        scene.environment = environmentMap;
-    }) */
- 
 
 /*
 debugObject.envMapIntensity = 0.4
@@ -69,28 +184,30 @@ gui.add(debugObject, 'envMapIntensity').min(0).max(4).step(0.001).onChange(updat
 
 // Update materials
 //updateAllMaterials()
+/* HDR (RGBE) Environment Map ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ */
 
 
 
-/**
- * Floor
- */
 
-/**
- * Lights
- */
-/* const directionalLight = new THREE.DirectionalLight('#ffffff', 4)
-directionalLight.castShadow = true
-directionalLight.shadow.camera.far = 15
-directionalLight.shadow.mapSize.set(1024, 1024)
-directionalLight.shadow.normalBias = 0.05
-directionalLight.position.set(3.5, 2, - 1.25)
-scene.add(directionalLight)
 
-gui.add(directionalLight, 'intensity').min(0).max(10).step(0.001).name('lightIntensity')
-gui.add(directionalLight.position, 'x').min(- 5).max(5).step(0.001).name('lightX')
-gui.add(directionalLight.position, 'y').min(- 5).max(5).step(0.001).name('lightY')
-gui.add(directionalLight.position, 'z').min(- 5).max(5).step(0.001).name('lightZ') */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /**
  * Sizes
@@ -114,36 +231,115 @@ window.addEventListener('resize', () =>
     renderer.setSize(sizes.width, sizes.height)
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 })
+/* Sizes ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ */
 
-/**
- * Camera
- */
-// Base camera
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Camera
 const camera = new THREE.PerspectiveCamera(35, sizes.width / sizes.height, 0.1, 100)
 camera.position.set(6, 4, 8)
 scene.add(camera)
+/* Camera ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Controls
 const controls = new OrbitControls(camera, canvas)
 controls.enableDamping = true
+/* Controls ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ */
 
-/**
- * Renderer
- */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Renderer ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ */
 const renderer = new THREE.WebGLRenderer({
     canvas: canvas,
     antialias: false
 })
-renderer.toneMapping = THREE.CineonToneMapping;
-renderer.toneMappingExposure = 0.2;
+renderer.toneMapping = THREE.NoToneMapping;
 renderer.shadowMap.enabled = false;
-//renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
 renderer.setSize(sizes.width, sizes.height);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+/* Renderer ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ */
 
-/**
- * Animate
- */
+
+/* Actual content ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ */
+
+    /* Entrance Area */
+/* const entranceGeometry = new THREE.PlaneGeometry( 1, 1 );
+const entranceMaterial = new THREE.MeshPhongMaterial( { side: THREE.DoubleSide} );
+const entrancePlane = new THREE.Mesh( entranceGeometry, entranceMaterial );
+entrancePlane.rotation.x = Math.PI / 2;
+scene.add( entrancePlane ); */
+gltfLoader.load('entrance_asteroid.glb', (gltf) =>
+    {
+       scene.add(gltf.scene) 
+    }
+)
+
+    /* Entrance Area */
+/* Actual content ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ */
+
+
+
+
+
+
+
+
+
+
+
+/* Animate ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ */
 const clock = new THREE.Clock()
 let previousTime = 0
 
@@ -162,5 +358,7 @@ const tick = () =>
     // Call tick again on the next frame
     window.requestAnimationFrame(tick)
 }
+/* Animate ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ */
+
 
 tick()
