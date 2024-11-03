@@ -3,6 +3,17 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import GUI from 'lil-gui';
 import { GLTFLoader, RGBELoader } from 'three/examples/jsm/Addons.js';
 
+import { TransformControls } from 'three/examples/jsm/Addons.js';
+
+
+
+
+
+
+// Create transform controls
+/* const controls = new TransformControls(camera, renderer.domElement);
+scene.add(controls);
+ */
 
 
 /**
@@ -327,6 +338,62 @@ gltfLoader.load('entrance_asteroid.glb', (gltf) =>
 )
 
     /* Entrance Area */
+
+    /* Green Crystal Meteroid */
+    gltfLoader.load('Asteroid_Green_Crystals_1D.glb', (gltf) =>
+        {
+            const green_asteroid = gltf.scene;
+            green_asteroid.position.z = 50;
+            scene.add(green_asteroid) 
+        }
+)
+    /* Green Crystal Meteroid */
+
+    /* 1E Asteroid */
+    gltfLoader.load('Asteroid_1E.glb', (gltf) =>
+        {
+            const asteroid_1E = gltf.scene;
+            asteroid_1E.position.z = -50;
+            scene.add(asteroid_1E) 
+        }
+)
+    /* Green Crystal Meteroid */
+
+    /* Moon Asteroid */
+    gltfLoader.load('Moon_asteroid.glb', (gltf) =>
+        {
+            const moon_asteroid = gltf.scene;
+            moon_asteroid.position.x = -50;
+            moon_asteroid.scale.x = 0.1;
+            moon_asteroid.scale.y = 0.1;
+            moon_asteroid.scale.z = 0.1;
+            scene.add(moon_asteroid) 
+        }
+    )
+    /* Moon Asteroid */
+
+    /* 1C Asteroid */
+    gltfLoader.load('Asteroid_1C.glb', (gltf) =>
+        {
+            const asteroid_1C = gltf.scene;
+            asteroid_1C.position.x = 50;
+            scene.add(asteroid_1C) 
+        }
+    )
+    /* 1C Asteroid */
+
+    /* 1A Asteroid */
+    gltfLoader.load('Asteroid_1A.glb', (gltf) =>
+        {
+            const asteroid_1A = gltf.scene;
+            asteroid_1A.position.x = 20;
+            scene.add(asteroid_1A) 
+        }
+    )
+    /* 1A Asteroid */
+
+
+    /* Green Crystal Meteroid */
 /* Actual content ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ */
 
 
