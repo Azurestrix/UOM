@@ -1,19 +1,24 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
-import GUI from 'lil-gui';
 import { GLTFLoader, RGBELoader } from 'three/examples/jsm/Addons.js';
-
-import { TransformControls } from 'three/examples/jsm/Addons.js';
-
+import GUI from 'lil-gui';
 
 
 
 
+import Stats from 'three/examples/jsm/libs/stats.module.js';
 
-// Create transform controls
-/* const controls = new TransformControls(camera, renderer.domElement);
-scene.add(controls);
- */
+
+
+/* Stats */
+const stats = new Stats();
+stats.showPanel(0);
+document.body.appendChild(stats.dom); 
+/* Stats ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑*/
+
+
+
+
 
 
 /**
@@ -122,11 +127,20 @@ scene.add( gridHelper );
 
 
 
+import loadingScreenVertexShader from 'environmentMap/shaders/loading_screen/vertex.glsl'
+import loadingScreenFragmentShader from 'environmentMap/shaders/loading_screen/fragment.glsl'
 
 
 
-
-
+/* Loading Screen */
+    const loaderGeometry = new THREE.PlaneGeometry(1, 1, 1, 1);
+    const loaderMaterial = new THREE.RawShaderMaterial({ 
+        vertexShader: loadingScreenVertexShader,
+        fragmentShader: loadingScreenFragmentShader
+    });
+    const loadingScreen = new THREE.Mesh(loaderGeometry, loaderMaterial);
+    scene.add(loadingScreen);
+/* Loading Screen ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑*/
 
 
 
@@ -404,6 +418,17 @@ gltfLoader.load('entrance_asteroid.glb', (gltf) =>
 
 
 
+/* Test */
+
+/* Test */
+
+
+
+
+
+
+
+
 
 
 /* Animate ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ */
@@ -412,6 +437,8 @@ let previousTime = 0
 
 const tick = () =>
 {
+    stats.begin();
+
     const elapsedTime = clock.getElapsedTime()
     const deltaTime = elapsedTime - previousTime
     previousTime = elapsedTime
@@ -424,6 +451,8 @@ const tick = () =>
 
     // Call tick again on the next frame
     window.requestAnimationFrame(tick)
+
+    stats.end();
 }
 /* Animate ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ */
 
