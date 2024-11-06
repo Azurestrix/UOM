@@ -127,20 +127,20 @@ scene.add( gridHelper );
 
 
 
-import loadingScreenVertexShader from 'environmentMap/shaders/loading_screen/vertex.glsl'
-import loadingScreenFragmentShader from 'environmentMap/shaders/loading_screen/fragment.glsl'
+/* import loadingScreenVertexShader from 'shaders/loading_screen/vertex.glsl'
+import loadingScreenFragmentShader from 'shaders/loading_screen/fragment.glsl' */
 
 
 
 /* Loading Screen */
-    const loaderGeometry = new THREE.PlaneGeometry(1, 1, 1, 1);
+/*     const loaderGeometry = new THREE.PlaneGeometry(1, 1, 1, 1);
     const loaderMaterial = new THREE.RawShaderMaterial({ 
         vertexShader: loadingScreenVertexShader,
         fragmentShader: loadingScreenFragmentShader
     });
     const loadingScreen = new THREE.Mesh(loaderGeometry, loaderMaterial);
-    scene.add(loadingScreen);
-/* Loading Screen ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑*/
+    scene.add(loadingScreen); */
+/* Loading Screen ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ */
 
 
 
@@ -345,7 +345,7 @@ const entranceMaterial = new THREE.MeshPhongMaterial( { side: THREE.DoubleSide} 
 const entrancePlane = new THREE.Mesh( entranceGeometry, entranceMaterial );
 entrancePlane.rotation.x = Math.PI / 2;
 scene.add( entrancePlane ); */
-gltfLoader.load('entrance_asteroid.glb', (gltf) =>
+gltfLoader.load('asteroids/entrance_asteroid.glb', (gltf) =>
     {
        scene.add(gltf.scene) 
     }
@@ -354,7 +354,7 @@ gltfLoader.load('entrance_asteroid.glb', (gltf) =>
     /* Entrance Area */
 
     /* Green Crystal Meteroid */
-    gltfLoader.load('Asteroid_Green_Crystals_1D.glb', (gltf) =>
+    gltfLoader.load('asteroids/Asteroid_Green_Crystals_1D.glb', (gltf) =>
         {
             const green_asteroid = gltf.scene;
             green_asteroid.position.z = 50;
@@ -364,7 +364,7 @@ gltfLoader.load('entrance_asteroid.glb', (gltf) =>
     /* Green Crystal Meteroid */
 
     /* 1E Asteroid */
-    gltfLoader.load('Asteroid_1E.glb', (gltf) =>
+    gltfLoader.load('asteroids/Asteroid_1E.glb', (gltf) =>
         {
             const asteroid_1E = gltf.scene;
             asteroid_1E.position.z = -50;
@@ -374,7 +374,7 @@ gltfLoader.load('entrance_asteroid.glb', (gltf) =>
     /* Green Crystal Meteroid */
 
     /* Moon Asteroid */
-    gltfLoader.load('Moon_asteroid.glb', (gltf) =>
+    gltfLoader.load('asteroids/Moon_asteroid.glb', (gltf) =>
         {
             const moon_asteroid = gltf.scene;
             moon_asteroid.position.x = -50;
@@ -387,7 +387,7 @@ gltfLoader.load('entrance_asteroid.glb', (gltf) =>
     /* Moon Asteroid */
 
     /* 1C Asteroid */
-    gltfLoader.load('Asteroid_1C.glb', (gltf) =>
+    gltfLoader.load('asteroids/Asteroid_1C.glb', (gltf) =>
         {
             const asteroid_1C = gltf.scene;
             asteroid_1C.position.x = 50;
@@ -397,7 +397,7 @@ gltfLoader.load('entrance_asteroid.glb', (gltf) =>
     /* 1C Asteroid */
 
     /* 1A Asteroid */
-    gltfLoader.load('Asteroid_1A.glb', (gltf) =>
+    gltfLoader.load('asteroids/Asteroid_1A.glb', (gltf) =>
         {
             const asteroid_1A = gltf.scene;
             asteroid_1A.position.x = 20;
