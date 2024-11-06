@@ -5,7 +5,7 @@ import GUI from 'lil-gui';
 
 
 
-
+import { gsap } from 'gsap'; // maybye unisntall and do it in vanilla css
 import Stats from 'three/examples/jsm/libs/stats.module.js';
 
 
@@ -24,8 +24,25 @@ document.body.appendChild(stats.dom);
 /**
  * Loaders
  */
-const rgbeLoader = new RGBELoader();
-const gltfLoader = new GLTFLoader();
+const loadingManager = new THREE.LoadingManager(
+    // Loaded
+    () =>
+    {
+        gsap.to(loaderMaterial.uniforms.uAlpha, {duration: 3, value: 0});
+    },
+    // Progress
+    () =>
+    {
+        console.log('Progress')
+    },
+    // Error
+    () =>
+    {
+        console.log('Loading error.')
+    }
+);
+const rgbeLoader = new RGBELoader(loadingManager);
+const gltfLoader = new GLTFLoader(loadingManager);
 /* Loaders ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ */
 
 
@@ -127,19 +144,24 @@ scene.add( gridHelper );
 
 
 
-/* import loadingScreenVertexShader from 'shaders/loading_screen/vertex.glsl'
-import loadingScreenFragmentShader from 'shaders/loading_screen/fragment.glsl' */
+import loadingScreenVertexShader from '/shaders/loading_screen/vertex.glsl'
+import loadingScreenFragmentShader from '/shaders/loading_screen/fragment.glsl' 
 
 
 
 /* Loading Screen */
-/*     const loaderGeometry = new THREE.PlaneGeometry(1, 1, 1, 1);
+    const loaderGeometry = new THREE.PlaneGeometry(2, 2, 1, 1);
     const loaderMaterial = new THREE.RawShaderMaterial({ 
         vertexShader: loadingScreenVertexShader,
-        fragmentShader: loadingScreenFragmentShader
+        fragmentShader: loadingScreenFragmentShader,
+        uniforms:
+        {
+            uAlpha: {value: 1}
+        },
+        transparent: true
     });
     const loadingScreen = new THREE.Mesh(loaderGeometry, loaderMaterial);
-    scene.add(loadingScreen); */
+    scene.add(loadingScreen);  
 /* Loading Screen ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ */
 
 

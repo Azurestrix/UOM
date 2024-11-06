@@ -2,3 +2,8 @@ Quaternions tend to behave better for small values if I remember correctly,
     and are much easier to interpolate (i.e., rotate from a to b over t seconds). 
 For rotation matrices, you need to re-calculate all of the trig values for each intermediate step, 
     whereas for quaternions you simply have a linear combination of your start and end quaternions.
+
+
+package.json type:module else shaders wont work and 
+
+keep shaders in src due to vite 
