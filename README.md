@@ -1,1 +1,1 @@
-https://universe-of-madness-2jefxb8cs-azurestrixs-projects.vercel.app/
+universe-of-madness-apo6xekaz-azurestrixs-projects.vercel.app
