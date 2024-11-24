@@ -1,4 +1,4 @@
-universe-of-madness-h9rli8tvz-azurestrixs-projects.vercel.app
+https://universe-of-madness-75mg9hqpj-azurestrixs-projects.vercel.app
 
 
 Only works on pc as of now and has a bit of a loading time.
